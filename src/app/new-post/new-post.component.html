@@ -1,0 +1,88 @@
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form #addPost='ngForm' (ngSubmit)="onSubmit(addPost)">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="form-control" 
+                    [(ngModel)]="blogPost.title" 
+                    autofocus
+                    required
+                    #title="ngModel"
+                    >
+                    <div *ngIf="title.errors?.required">
+                        <small class="text-danger">
+                            Please enter title
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="featuredImage">Featured Image (URL)</label>
+                    <input type="text" name="featuredImage"class="form-control" 
+                    [(ngModel)]="blogPost.featuredImage"
+                    required
+                    pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+                    #image="ngModel"
+                    >
+                    <div *ngIf="image.errors?.required">
+                        <small class="text-danger">
+                            Please enter image URL
+                        </small>
+                    </div>
+                    <div *ngIf="image.errors?.pattern">
+                        <small class="text-danger">
+                            Should be an URL
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post">Post</label>
+                    <textarea name="post" class="form-control" style="min-height:200px" 
+                    [(ngModel)]="blogPost.post"
+                    required
+                    #post="ngModel"
+                    ></textarea>
+                    <div *ngIf="post.errors?.required">
+                        <small class="text-danger">
+                            Please enter your post
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" name="category" class="form-control" 
+                    [(ngModel)]="blogPost.category"
+                    required
+                    #category="ngModel"
+                    >
+                    <div *ngIf="category.errors?.required">
+                        <small class="text-danger">
+                            Please enter your catrgory
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tags">Tags</label>
+                    <textarea name="tags" class="form-control" 
+                    [(ngModel)]="tags"
+                    pattern="^(#[a-zA-Z0-9]+)(,#[A-Za-z0-9]+)*"
+                    #tag="ngModel"
+                    ></textarea>
+                    <div *ngIf="tag.errors?.pattern">
+                        <small class="text-danger">
+                            Tags should start with '#' and be seperated by ','. e.g. #funny,#scary
+                        </small>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-success btn-sm"
+                    [disabled]="!addPost.valid"
+                    >Add Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+

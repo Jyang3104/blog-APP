@@ -1,0 +1,70 @@
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form #updatePost='ngForm' (ngSubmit)="onSubmit(updatePost)">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="form-control" [class.is-invalid]="!title.valid"
+                    [(ngModel)]="blogPost.title" 
+                    autofocus
+                    required
+                    #title="ngModel"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="featuredImage">Featured Image (URL)</label>
+                    <input type="text" name="featuredImage"class="form-control" [class.is-invalid]="!image.valid"
+                    [(ngModel)] ="blogPost.featuredImage"
+                    required
+                    pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+                    #image="ngModel"
+                    >
+                    <div *ngIf="image.errors?.pattern">
+                        <small class="text-danger">
+                            Should be an URL
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post">Post</label>
+                    <textarea name="post" class="form-control" style="min-height:200px" [class.is-invalid]="!post.valid"
+                    [(ngModel)]="blogPost.post"
+                    required
+                    #post="ngModel"
+                    ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" name="category" class="form-control" [class.is-invalid]="!category.valid"
+                    [(ngModel)]="blogPost.category"
+                    required
+                    #category="ngModel"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="tags">Tags</label>
+                    <textarea name="tags" class="form-control" [class.is-invalid]="!tag.valid"
+                    [(ngModel)]="tags"
+                    pattern="^(#[a-zA-Z0-9]+)(,#[A-Za-z0-9]+)*"
+                    #tag="ngModel"
+                    ></textarea>
+                    <div *ngIf="tag.errors?.pattern">
+                        <small class="text-danger">
+                            Tags should start with '#' and be seperated by ','. e.g. #funny,#scary
+                        </small>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <button class="btn btn-danger btn-sm"
+                    (click)="deletePost()"
+                    >Delete Post</button> &nbsp; 
+                    <button type="submit" class="btn btn-success btn-sm"
+                    [disabled]="!updatePost.valid"
+                    >Update Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
