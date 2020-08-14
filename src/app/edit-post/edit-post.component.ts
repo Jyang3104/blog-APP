@@ -31,7 +31,6 @@ export class EditPostComponent implements OnInit {
           this.blogPost = data;
           this.tags = data.tags.toString();
          
-          console.log(data.title);
         });
     });
   }

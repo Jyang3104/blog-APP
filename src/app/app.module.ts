@@ -19,7 +19,6 @@ import { TagsComponent } from './tags/tags.component';
 import { PostDataComponent } from './post-data/post-data.component';
 import { PagingComponent } from './paging/paging.component';
 import { FooterPostComponent } from './footer-post/footer-post.component';
-import { PostFormComponent } from './post-form/post-form.component';
 import { PostTableComponent } from './post-table/post-table.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { NewPostComponent } from './new-post/new-post.component';
@@ -44,7 +43,6 @@ import { NewPostComponent } from './new-post/new-post.component';
     PostDataComponent,
     PagingComponent,
     FooterPostComponent,
-    PostFormComponent,
     PostTableComponent,
     EditPostComponent,
     NewPostComponent
